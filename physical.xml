@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile modified="2019-08-16T18:22:59.402Z" host="www.draw.io" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36" etag="oLSJmzoug6eGJnnlARkQ" version="11.1.4" type="google" compressed="false">
+  <diagram id="Z668AZN8f5nT1D2SPPFL" name="Page-1">
+    <mxGraphModel dx="731" dy="438" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <object label="&lt;span style=&quot;white-space: normal&quot;&gt;&lt;b&gt;%Name% : %BlockType%&lt;/b&gt;&lt;/span&gt;" Name="BrakeSensor" Parent="CHASSIS" Position="PedalAssembly" MfgPartNumber="123456789" InputVoltage="24" MaxCurrent="0.2" OutputType="Digital" OutputMin="1" OutputMax="5" OutputParameter="BrakePressure" BlockType="SEN" placeholders="1" id="2YpdEY8oORx3fjk5kcs5-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+            <mxGeometry x="90" y="250" width="130" height="70" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;%Name% : %BlockType%&lt;/b&gt;" Name="BSPD" Parent="CHASSIS" Position="UnderSeat" InputVoltage="24" MaxCurrent="0.2" BlockType="ECU" placeholders="1" id="2YpdEY8oORx3fjk5kcs5-2">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+            <mxGeometry x="450" y="250" width="130" height="70" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;%Name% : %BlockType%&lt;/b&gt;" Name="BrakePressure" BlockType="DIG" placeholders="1" VoltageHigh="5" VoltageLow="1" Protocol="Binary" id="2YpdEY8oORx3fjk5kcs5-3">
+          <mxCell style="endArrow=block;endSize=16;endFill=0;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="2YpdEY8oORx3fjk5kcs5-1" target="2YpdEY8oORx3fjk5kcs5-2" edge="1">
+            <mxGeometry width="160" relative="1" as="geometry">
+              <mxPoint x="355" y="220" as="sourcePoint"/>
+              <mxPoint x="420" y="350" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;%Name% : %BlockType%&lt;/b&gt;" Name="BSPD" Parent="CHASSIS" Position="UnderSeat" InputVoltage="24" MaxCurrent="0.2" BlockType="ECU" placeholders="1" id="qhaE7OJ2hAVIAAOIQZVo-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+            <mxGeometry x="454" y="130" width="130" height="70" as="geometry"/>
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile modified="2019-08-16T16:42:07.007Z" host="www.draw.io" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36" etag="a81TCC_LvhHVprqLHV0i" version="11.1.4" type="google" compressed="false">
+  <diagram id="yOrAau-X5QbK2t4TFSsf" name="Page-1">
+    <mxGraphModel dx="731" dy="399" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <object label="&lt;b&gt;%Name% : %BlockType%&lt;/b&gt;" placeholders="1" Name="BrakeSensor" Parent="BrakeSensor" System="BrakeSystem" BlockType="NPC" id="Sa5RoMOKzB4C418BSFVM-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCCCCC;strokeColor=#666666;gradientColor=none;" vertex="1" parent="1">
+            <mxGeometry x="290" y="150" width="130" height="70" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;%Name% : %BlockType%&lt;/b&gt;" placeholders="1" Name="BSPDSensorCheck" Parent="BSPD" System="BSPD" BlockType="NPC" id="Sa5RoMOKzB4C418BSFVM-2">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCCCCC;strokeColor=#666666;gradientColor=none;" vertex="1" parent="1">
+            <mxGeometry x="355" y="350" width="130" height="70" as="geometry"/>
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;%Name% : %BlockType%&lt;/b&gt;" Name="BrakePressure" BlockType="DIG" placeholders="1" VoltageHigh="5" VoltageLow="1" Protocol="Binary" id="Sa5RoMOKzB4C418BSFVM-3">
+          <mxCell style="endArrow=block;endSize=16;endFill=0;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Sa5RoMOKzB4C418BSFVM-1" target="Sa5RoMOKzB4C418BSFVM-2">
+            <mxGeometry width="160" relative="1" as="geometry">
+              <mxPoint x="349" y="250" as="sourcePoint"/>
+              <mxPoint x="520" y="440" as="targetPoint"/>
+            </mxGeometry>
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
