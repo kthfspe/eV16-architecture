@@ -44,6 +44,7 @@ hmicount = 1
 npccount = 1
 pccount = 1
 swccount = 1
+uniquecount = 0
 f_cansignalcount = 1
 f_digitalsignalcount = 1
 f_analogsignalcount = 1
@@ -120,8 +121,12 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
         else:
             for item in range(1,sensorcount):
                 if (sensors[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    sensors.update({count:a})
-                    sensorcount += 1
+                    uniquecount += 1
+            if uniquecount == 0:
+                sensors.update({count:a})
+                sensorcount += 1
+            else:
+                uniquecount = 0
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'act':
