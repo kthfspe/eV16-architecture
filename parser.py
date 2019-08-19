@@ -125,9 +125,7 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
             if uniquecount == sensorcount:
                 sensors.update({sensorcount+1:a})
                 sensorcount += 1
-                uniquecount = 0
-            else:
-                uniquecount = 0
+            uniquecount = 0
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'act':
@@ -137,8 +135,11 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
         else:
             for item in range(1,actuatorcount+1):
                 if (actuators[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    actuators.update({actuatorcount+1:a})
-                    actuatorcount += 1
+                    uniquecount += 1
+            if uniquecount == actuatorcount:
+                actuators.update({actuatorcount+1:a})
+                actuatorcount += 1
+            uniquecount = 0
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'hmi':
@@ -148,8 +149,11 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
         else:
             for item in range(1,hmicount+1):
                 if (hmi[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    hmi.update({hmicount+1:a})
-                    hmicount += 1
+                    uniquecount += 1
+            if uniquecount == hmicount:
+                hmi.update({hmicount+1:a})
+                hmicount += 1
+            uniquecount = 0
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'otsc':
@@ -159,8 +163,11 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
         else:
             for item in range(1,otsccount+1):
                 if (otsc[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    otsc.update({otsccount+1:a})
-                    otsccount += 1
+                    uniquecount += 1
+            if uniquecount == otsccount:
+                otsc.update({otsccount+1:a})
+                otsccount += 1
+            uniquecount = 0
         readid(a)
 
 
@@ -175,9 +182,7 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
             if uniquecount == ecucount:
                 ecus.update({ecucount+1:a})
                 ecucount += 1
-                uniquecount = 0
-            else:
-                uniquecount = 0
+            uniquecount = 0
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'enc':
@@ -187,8 +192,11 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
         else:
             for item in range(1,enclosurecount+1):
                 if (enclosures[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    enclosures.update({enclosurecount+1:a})
-                    enclosurecount += 1
+                    uniquecount += 1
+            if uniquecount == enclosurecount:
+                enclosures.update({enclosurecount+1:a})
+                enclosurecount += 1
+            uniquecount = 0
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'con':
@@ -198,8 +206,11 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
         else:
             for item in range(1,connectorcount+1):
                 if (connectors[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    connectors.update({connectorcount+1:a})
-                    connectorcount += 1
+                    uniquecount += 1
+            if uniquecount == connectorcount:
+                connectors.update({connectorcount+1:a})
+                connectorcount += 1
+            uniquecount = 0
         readid(a)
 
 
@@ -220,8 +231,11 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
         else:
             for item in range(1,npccount+1):
                 if (npc[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    npc.update({npccount+1:a})
-                    npccount += 1
+                    uniquecount += 1
+            if uniquecount == npccount:
+                npc.update({npccount+1:a})
+                npccount += 1
+            uniquecount = 0
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'pc':
@@ -231,8 +245,11 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
         else:
             for item in range(1,pccount+1):
                 if (pc[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    pc.update({pccount+1:a})
-                    pccount += 1
+                    uniquecount += 1
+            if uniquecount == pccount:
+                pc.update({pccount+1:a})
+                pccount += 1
+            uniquecount = 0
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'swc':
@@ -242,8 +259,11 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
         else:
             for item in range(1,swccount+1):
                 if (swc[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    swc.update({swccount+1:a})
-                    swccount += 1
+                    uniquecount += 1
+            if uniquecount == swccount:
+                swc.update({swccount+1:a})
+                swccount += 1
+            uniquecount = 0
         readid(a)
 
 
