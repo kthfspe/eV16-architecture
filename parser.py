@@ -35,33 +35,33 @@ p_gndsignals = dict()
 p_signals = dict()
 
 idcount = 1
-ecucount = 1
-sensorcount = 1
-actuatorcount = 1
-otsccount = 1
-enclosurecount = 1
-hmicount = 1
-npccount = 1
-pccount = 1
-swccount = 1
+ecucount = 0
+sensorcount = 0
+actuatorcount = 0
+otsccount = 0
+enclosurecount = 0
+hmicount = 0
+npccount = 0
+pccount = 0
+swccount = 0
 uniquecount = 0
-f_cansignalcount = 1
-f_digitalsignalcount = 1
-f_analogsignalcount = 1
-f_internalsignalcount = 1
-f_hvsignalcount = 1
-f_lvsignalcount = 1
-f_gndsignalcount = 1
-f_signalcount = 1
+f_cansignalcount = 0
+f_digitalsignalcount = 0
+f_analogsignalcount = 0
+f_internalsignalcount = 0
+f_hvsignalcount = 0
+f_lvsignalcount = 0
+f_gndsignalcount = 0
+f_signalcount = 0
 
-p_cansignalcount = 1
-p_digitalsignalcount = 1
-p_analogsignalcount = 1
-p_internalsignalcount = 1
-p_hvsignalcount = 1
-p_lvsignalcount = 1
-p_gndsignalcount = 1
-p_signalcount = 1
+p_cansignalcount = 0
+p_digitalsignalcount = 0
+p_analogsignalcount = 0
+p_internalsignalcount = 0
+p_hvsignalcount = 0
+p_lvsignalcount = 0
+p_gndsignalcount = 0
+p_signalcount = 0
 
 
 # Read data store by BlockType
@@ -89,7 +89,7 @@ def p_readsignal(child):
     z.update(s)
     d = z.copy()
     d.update(t)
-    p_signals.update({p_signalcount:d})
+    p_signals.update({p_signalcount+1:d})
     p_signalcount += 1
 
 def f_readsignal(child):
@@ -107,7 +107,7 @@ def f_readsignal(child):
     z.update(s1)
     d = z.copy()
     d.update(t)
-    f_signals.update({f_signalcount:d})
+    f_signals.update({f_signalcount+1:d})
     f_signalcount += 1
 
 root = ET.parse('physical.xml').getroot()
@@ -115,84 +115,90 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
     a = dict(child.attrib)
     #print(child.attrib["BlockType"])
     if child.attrib["BlockType"].lower() == 'sen':
-        if sensorcount == 1:
-            sensors.update({sensorcount:a})
+        if sensorcount == 0:
+            sensors.update({sensorcount+1:a})
             sensorcount += 1
         else:
-            for item in range(1,sensorcount):
+            for item in range(1,sensorcount+1):
                 if (sensors[item]["Name"].lower() != child.attrib["Name"].lower()):
                     uniquecount += 1
-            if uniquecount == 0:
-                sensors.update({count:a})
+            if uniquecount == sensorcount:
+                sensors.update({sensorcount+1:a})
                 sensorcount += 1
+                uniquecount = 0
             else:
                 uniquecount = 0
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'act':
-        if actuatorcount == 1:
-            actuators.update({actuatorcount:a})
+        if actuatorcount == 0:
+            actuators.update({actuatorcount+1:a})
             actuatorcount += 1
         else:
-            for item in range(1,actuatorcount):
+            for item in range(1,actuatorcount+1):
                 if (actuators[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    actuators.update({actuatorcount:a})
+                    actuators.update({actuatorcount+1:a})
                     actuatorcount += 1
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'hmi':
-        if hmicount == 1:
-            hmi.update({hmicount:a})
+        if hmicount == 0:
+            hmi.update({hmicount+1:a})
             hmicount += 1
         else:
-            for item in range(1,hmicount):
+            for item in range(1,hmicount+1):
                 if (hmi[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    hmi.update({hmicount:a})
+                    hmi.update({hmicount+1:a})
                     hmicount += 1
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'otsc':
-        if otsccount == 1:
-            otsc.update({otsccount:a})
+        if otsccount == 0:
+            otsc.update({otsccount+1:a})
             otsccount += 1
         else:
-            for item in range(1,otsccount):
+            for item in range(1,otsccount+1):
                 if (otsc[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    otsc.update({otsccount:a})
+                    otsc.update({otsccount+1:a})
                     otsccount += 1
         readid(a)
 
 
     elif child.attrib["BlockType"].lower() == 'ecu':
-        if ecucount == 1:
-            ecus.update({ecucount:a})
+        if ecucount == 0:
+            ecus.update({ecucount+1:a})
             ecucount += 1
         else:
-            for item in range(1,ecucount):
+            for item in range(1,ecucount+1):
                 if (ecus[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    ecus.update({ecucount:a})
-                    ecucount += 1
+                    uniquecount += 1
+            if uniquecount == ecucount:
+                ecus.update({ecucount+1:a})
+                ecucount += 1
+                uniquecount = 0
+            else:
+                uniquecount = 0
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'enc':
-        if enclosurecount == 1:
-            enclosures.update({enclosurecount:a})
+        if enclosurecount == 0:
+            enclosures.update({enclosurecount+1:a})
             enclosurecount += 1
         else:
-            for item in range(1,enclosurecount):
+            for item in range(1,enclosurecount+1):
                 if (enclosures[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    enclosures.update({enclosurecount:a})
+                    enclosures.update({enclosurecount+1:a})
                     enclosurecount += 1
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'con':
-        if connectorcount == 1:
-            connectors.update({connectorcount:a})
+        if connectorcount == 0:
+            connectors.update({connectorcount+1:a})
             connectorcount += 1
         else:
-            for item in range(1,connectorcount):
+            for item in range(1,connectorcount+1):
                 if (connectors[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    connectors.update({count:a})
+                    connectors.update({connectorcount+1:a})
                     connectorcount += 1
         readid(a)
 
@@ -208,35 +214,35 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
     a = dict(child.attrib)
 
     if child.attrib["BlockType"].lower() == 'npc':
-        if npccount == 1:
-            npc.update({npccount:a})
+        if npccount == 0:
+            npc.update({npccount+1:a})
             npccount += 1
         else:
-            for item in range(1,npccount):
+            for item in range(1,npccount+1):
                 if (npc[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    npc.update({npccount:a})
+                    npc.update({npccount+1:a})
                     npccount += 1
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'pc':
-        if pccount == 1:
-            pc.update({pccount:a})
+        if pccount == 0:
+            pc.update({pccount+1:a})
             pccount += 1
         else:
-            for item in range(1,pccount):
+            for item in range(1,pccount+1):
                 if (pc[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    pc.update({pccount:a})
+                    pc.update({pccount+1:a})
                     pccount += 1
         readid(a)
 
     elif child.attrib["BlockType"].lower() == 'swc':
-        if swccount == 1:
-            swc.update({swccount:a})
+        if swccount == 0:
+            swc.update({swccount+1:a})
             swccount += 1
         else:
-            for item in range(1,swccount):
+            for item in range(1,swccount+1):
                 if (swc[item]["Name"].lower() != child.attrib["Name"].lower()):
-                    swc.update({swccount:a})
+                    swc.update({swccount+1:a})
                     swccount += 1
         readid(a)
 
@@ -246,37 +252,37 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
     a = dict(child.attrib)
 
     if child.attrib["BlockType"].lower() == 'can':
-        f_cansignals.update({f_cansignalcount:a})
+        f_cansignals.update({f_cansignalcount+1:a})
         f_cansignalcount += 1
         f_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'dig':
-        f_digitalsignals.update({f_digitalsignalcount:a})
+        f_digitalsignals.update({f_digitalsignalcount+1:a})
         f_digitalsignalcount += 1
         f_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'ana':
-        f_analogsignals.update({f_analogsignalcount:a})
+        f_analogsignals.update({f_analogsignalcount+1:a})
         f_analogsignalcount += 1
         f_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'iv':
-        f_internalsignals.update({f_internalsignalcount:a})
+        f_internalsignals.update({f_internalsignalcount+1:a})
         f_internalsignalcount += 1
         f_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'lvs':
-        f_lvsignals.update({f_lvsignalcount:a})
+        f_lvsignals.update({f_lvsignalcount+1:a})
         f_lvsignalcount += 1
         f_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'hvs':
-        f_hvsignals.update({f_hvsignalcount:a})
+        f_hvsignals.update({f_hvsignalcount+1:a})
         f_hvsignalcount += 1
         f_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'gnd':
-        f_gndsignals.update({f_gndsignalcount:a})
+        f_gndsignals.update({f_gndsignalcount+1:a})
         f_gndsignalcount += 1
         f_readsignal(child)
 
@@ -284,37 +290,37 @@ root = ET.parse('physical.xml').getroot()
 for child in root.findall('diagram/mxGraphModel/root/object'):
     a = dict(child.attrib)
     if child.attrib["BlockType"].lower() == 'can':
-        p_cansignals.update({p_cansignalcount:a})
+        p_cansignals.update({p_cansignalcount+1:a})
         p_cansignalcount += 1
         p_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'dig':
-        p_digitalsignals.update({p_digitalsignalcount:a})
+        p_digitalsignals.update({p_digitalsignalcount+1:a})
         p_digitalsignalcount += 1
         p_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'ana':
-        p_analogsignals.update({p_analogsignalcount:a})
+        p_analogsignals.update({p_analogsignalcount+1:a})
         p_analogsignalcount += 1
         p_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'iv':
-        p_internalsignals.update({p_internalsignalcount:a})
+        p_internalsignals.update({p_internalsignalcount+1:a})
         p_internalsignalcount += 1
         p_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'lvs':
-        p_lvsignals.update({p_lvsignalcount:a})
+        p_lvsignals.update({p_lvsignalcount+1:a})
         p_lvsignalcount += 1
         p_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'hvs':
-        p_hvsignals.update({p_hvsignalcount:a})
+        p_hvsignals.update({p_hvsignalcount+1:a})
         p_hvsignalcount += 1
         p_readsignal(child)
 
     elif child.attrib["BlockType"].lower() == 'gnd':
-        p_gndsignals.update({p_gndsignalcount:a})
+        p_gndsignals.update({p_gndsignalcount+1:a})
         p_gndsignalcount += 1
         p_readsignal(child)
 
