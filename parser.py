@@ -349,6 +349,7 @@ for child in root.findall('diagram/mxGraphModel/root/object'):
 
 # Else print error message
 
+# Glossary sheet 
 
 workbook = xlsxwriter.Workbook('SysArch.xlsx')
 idsheet = workbook.add_worksheet('ID')
